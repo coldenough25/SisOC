@@ -43,7 +43,7 @@
 
   <script>
     function Criar() {
-      location.href = "/registrar-ocorrencia.php";
+      location.href = "/TCC/registrar-ocorrencia.php";
     }
   </script>
 

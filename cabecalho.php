@@ -3,18 +3,19 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Sistema de ocorrência - Início</title>
+	<title>SisOC: Sistema para Registro de Ocorrências</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
-	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+	<link rel="stylesheet" href="css/*.css">
 	<link rel="stylesheet" href="loja.css">
+	
 	<script type="text/javascript" src="js/util.js"></script>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-
-  <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
 </head>
 
 <body>
@@ -46,7 +47,7 @@
 		<div class="principal">
 			<div>
 				<nav class="navigation-bar">
-					<ul class="nav navbar-nav">
+					<ul>
 						<li><a href="index.php">
 								<div class="link">PÁGINA DE INÍCIO</div>
 							</a></li>
@@ -56,7 +57,7 @@
 						<li><a href="registrar-ocorrencia.php">
 								<div class="link">REGISTRAR OCORRÊNCIA</div>
 							</a></li>
-						<li><a href="listar-ocorrencia.php">
+						<li><a href="listar-ocorrencias.php">
 								<div class="link">LISTAR OCORRÊNCIAS</div>
 							</a></li>
 					</ul>

@@ -1,18 +1,20 @@
 <?php include("cabecalho.php"); ?>
+<?php include("banco-login.php"); ?>
 
-<div class="row">
-  <div class="col-md-12">
-    <div id="welcome">
-      <h1>Bem vindo 1!</h1>
-    </div>
-  </div>
+<div id="welcome" class="col-md-12 d-flex align-content-center">
+        <h1>Bem vindo ao SisOC!</h1>
 </div>
-<div class="row">
-  <div class="col-md-12">
-    <div id="welcome" style="background-color:red;">
-      <h1 style="color:white;">Bem vindo 2!</h1>
-    </div>
-  </div>
+
+<div id="box-div" class="col-md-12 d-flex align-content-center">
+        <div id="occurencies-boxes" class="col-md-3">
+                <h4>Ocorrências enviadas: 0</h4>
+        </div>
+        <div id="occurencies-boxes" class="col-md-3">
+                <h4>Ocorrências visualizadas: 0</h4>
+        </div>
+        <div id="occurencies-boxes" class="col-md-3">
+                <h4>Ocorrências finalizadas: 0</h4>
+        </div>
 </div>
 
 <?php include("rodape.php"); ?>
