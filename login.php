@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <?php
-include("cabecalho.php");
-include("conecta.php");
+    include("cabecalho.php");
+    #include("conecta.php");
 ?>
-<h1>Efetuar Login</h1>
-<div class="login-table d-flex justify-content-center">
-	<form action="efetua-login.php" method="post">
-		<table>
-			<tr>
-				<td>Login:</td>
-				<td><input class="form-control" type="text" name="user" /><br></td>
-			</tr>
-			<tr>
-				<td>Senha:</td>
-				<td><input class="form-control" type="password" name="password" /><br></td>
-			</tr>
-			<br>
-			<tr>
-				<td colspan="2"><input class="btn btn-primary" type="submit" value="Login" /></td>
-			</tr>
-		</table>
+<head>
+    <link rel="stylesheet" href="css/login.css">
+</head>
 
-	</form>
+<div class="content">
+    <h1>Efetuar Login</h1>
+    <form action="efetua-login.php" method="post">
+        <div class="form-group">
+            <label for="email">Endereço de email</label>
+            <input type="email" class="form-control" id="email" placeholder="E-mail">
+        </div>
+        <div class="form-group">
+            <label for="passwd">Senha</label>
+            <input type="password" class="form-control" id="passwd" placeholder="Senha">
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
 </div>
 <?php include("rodape.php"); ?>
