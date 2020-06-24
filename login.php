@@ -11,12 +11,16 @@
     <h1>Efetuar Login</h1>
     <form action="efetua-login.php" method="post">
         <div class="form-group">
-            <label for="email">Endereço de email</label>
-            <input type="email" class="form-control" id="email" placeholder="E-mail">
+            <label for="email">Endereço de E-mail</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="E-mail">
         </div>
         <div class="form-group">
-            <label for="passwd">Senha</label>
-            <input type="password" class="form-control" id="passwd" placeholder="Senha">
+            <label for="raSiape">RA/SIAPE</label>
+            <input type="number" class="form-control" id="raSiape" name="raSiape" placeholder="RA/SIAPE">
+        </div>
+        <div class="form-group">
+            <label for="data">Data de Nascimento</label>
+            <input type="date" class="form-control" id="data" name="data" placeholder="Data de Nascimento">
         </div>
         <button type="submit" class="btn btn-primary">Enviar</button>
     </form>

@@ -4,8 +4,8 @@ function insereProduto($conexao, $nome, $preco, $descricao, $categoria_id, $usad
 	$resultado = mysqli_query($conexao, $query);
 	return $resultado;
 }
-function verificarLogin($conexao, $user, $encrypted_password){
-	$resultado = mysqli_query($conexao, "select usuario, senha from usuarios where usuario = {$user} and senha = {$encrypted_password}");
+function verificarLogin($conexao, $email, $data, $raSiape){
+	$resultado = mysqli_query($conexao, "select usuario from usuarios where email = '{$email}' and data = {$data} and raSiape = {$raSiape}");
 	return $resultado;
 }
 function removeProdutos($conexao, $id){
