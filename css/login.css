@@ -1,0 +1,24 @@
+form {
+    margin-top: 32px;
+    padding: 32px 64px;
+	background-color: #52e398;
+	color: #312e38;
+	border: green 1px solid;
+    border-radius: 5px;
+    width: 45rem;
+
+    display: flex;
+    flex-direction: column;
+	justify-content: center;
+}
+
+button {
+    margin-top: 16px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
