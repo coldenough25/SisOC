@@ -10,6 +10,7 @@
     }
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         $count = 0;
+        $infos = array();
         if($_POST["tipo"] == "A" || $_POST["tipo"] == "S") {
             $ra_siape = $_POST["raSiape"];
             $senha = $_POST["password"];

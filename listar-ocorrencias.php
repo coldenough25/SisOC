@@ -1,6 +1,9 @@
-<?php include("cabecalho.php"); ?>
-<?php include("conecta.php"); ?>
-<?php include("banco-ocorrencia.php"); ?>
+<?php
+include("cabecalho.php");
+include("menu.php");
+include("conecta.php");
+include("banco-ocorrencia.php");
+?>
 
 <div class="container">
     <div class="row" style="margin-top: 10px; text-align: center;">
@@ -10,7 +13,7 @@
       <div class="col-md-3"><button class="btn btn-primary" onclick="Excluir()">Excluir Ocorrência</button></div> -->
     </div>
     <div class="row">
-      <?php var_dump(listaOcorrencias($conexao)); ?>
+      <!-- <?php var_dump(listaOcorrencias($conexao)); ?> -->
       <div class="col-md-12">
         <table class="table table-bordered table-hover" id="itens">
         <thead>
