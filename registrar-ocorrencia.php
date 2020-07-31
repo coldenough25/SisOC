@@ -16,12 +16,12 @@
       </div>
       <div class="row">
         <div class="form-group col-md-4">
-          <label for="setor">Setor</label>
-          <select required name="setor" class="form-control" id="setor">
+          <label for="setor">Tipo da Ocorrência</label>
+          <select required name="tipo" class="form-control" id="setor">
             <option value="">Selecione...</option>
-            <option value="1">DIREN</option>
-            <option value="2">DIRGE</option>
-            <option value="3">CEREL</option>
+            <option value="1">Infraestrutura</option>
+            <option value="2">Desentendimento</option>
+            <option value="3">Mau-uso do ambiente</option>
           </select>
         </div>
         <div class="form-group col-md-4">
