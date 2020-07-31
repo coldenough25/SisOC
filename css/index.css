@@ -1,0 +1,33 @@
+#box-div {
+    margin-top: 72px;
+
+	display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.occurencies-boxes {
+    height: 150px;
+    width: 340px;
+    background-color: #52e398;
+    color: #312e38;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.occurencies-boxes ~ .occurencies-boxes {
+    margin-left: 12px;
+}
+
+span {
+    font-size: 48px;
+}
