@@ -7,6 +7,14 @@
     }
     return $ocorrencias;
   }
+
+  function adicionaOcorrencias($conexao, $parametro) {
+    $resultado = pg_query($conexao, "delete * from ocorrencia where ");
+    //if(){
+
+    //}
+  }
+
   function listarTipos($conexao) {
       $tipos = array();
       $resultado = pg_query($conexao, "select * from ocorrencia_tipo");

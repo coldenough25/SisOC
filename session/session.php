@@ -2,7 +2,7 @@
    session_start();
 
    if(!isset($_SESSION['logado'])){
-        header("location:login.php");
+        header("location:session/login.php");
         die();
    }
 ?>

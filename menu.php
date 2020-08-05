@@ -1,5 +1,5 @@
 <?php
-include("session.php");
+include("session/session.php");
 ?>
 <body>
 	<input type="checkbox" id="check" onclick="onClick()">
@@ -34,13 +34,13 @@ include("session.php");
 						<li><a href="index.php">
 								<div class="link">PÁGINA DE INÍCIO</div>
 							</a></li>
-						<li><a href="registrar-ocorrencia.php">
+						<li><a href="ocorrencia/registrar-ocorrencia.php">
 								<div class="link">REGISTRAR OCORRÊNCIA</div>
 							</a></li>
-						<li><a href="listar-ocorrencias.php">
+						<li><a href="ocorrencia/listar-ocorrencias.php">
 								<div class="link">LISTAR OCORRÊNCIAS</div>
                             </a></li>
-						<li><a href="logout.php">
+						<li><a href="session/logout.php">
 								<div class="link">SAIR</div>
                             </a></li>
                     <?php } ?>

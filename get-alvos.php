@@ -1,6 +1,6 @@
 <?php
 include("conecta.php");
-include("banco-ocorrencia.php");
+include("ocorrencia/banco-ocorrencia.php");
 
 $tipo = $_GET['tipo'];
 $alvoLista = listarAlvos($conexao, $tipo);
