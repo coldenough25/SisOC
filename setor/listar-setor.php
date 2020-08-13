@@ -1,52 +1,76 @@
 <?php
 include("../cabecalho.php");
-include("../menu.php");
 include("../conecta.php");
 include("banco-setor.php");
 ?>
 
+<head>
+  <link rel="stylesheet" href="../css/global.css">
+</head>
 <div class="container">
-    <div class="row" style="margin-top: 10px; text-align: center;">
-      <div class="col-md-12"><button class="btn btn-primary" onclick="Criar()">Criar Ocorrência</button></div>
-      <!-- <div class="col-md-3"><button class="btn btn-primary" onclick="Alterar()">Alterar Ocorrência</button></div>
-      <div class="col-md-3"><button class="btn btn-primary" onclick="Visualizar()">Visualizar Ocorrência</button></div>
-      <div class="col-md-3"><button class="btn btn-primary" onclick="Excluir()">Excluir Ocorrência</button></div> -->
-    </div>
-    <div class="row">
-      <!-- <?php var_dump(listaOcorrencias($conexao)); ?> -->
-      <div class="col-md-12">
-        <table class="table table-bordered table-hover" id="itens">
-        <thead>
-          <tr>
-            <th>Sigla</th>
-            <th>Descrição</th>
-            <th>E-mail</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- <tr>
-            <td>Aluno 1</td>
-            <td>016989</td>
-            <td>19/02/2018 13:39</td>
-            <td>Infraestrutura</td>
-            <td>***</td>
-            <td>***</td>
-            <td>
-              <button type="button" class="limpo">
-                <span class="glyphicon glyphicon-download-alt"></span>
-              </button>
-            </td>
-          </tr> -->
-        </tbody>
-        </table>
-      </div>
-    </div>
+
+  <?php
+  if (isset($_GET["removido"]) && $_GET["removido"]) { ?>
+    <p class="alert-success">Setor deletado!!!</p>
+  <?php } else if (isset($_GET["removido"]) && $_GET["removido"] == false){ ?>
+    <p class="alert-danger">Setor não-deletado</p>
+  <?php }
+
+  $setores = listarSetor($conexao);
+
+  if (isset($_GET["alterado"]) && $_GET["alterado"]) { ?>
+    <p class="alert-success">Setor alterado!!!</p>
+  <?php }
+  ?>
+
+
+
+  <div class="row col-md-12">
+    <h1>Lista de Setores de Ocorrência</h1>
   </div>
 
-  <script>
-    function Criar() {
-      location.href = "./registrar-setor.php";
-    }
-  </script>
+  <div class="row">
+    <div class="row col-md-12">
+      <table class="table table-striped table-bordered">
+        <tr>
+          <th>NOME</th>
+          <th>SIGLA</th>
+          <th>DELETAR</th>
+          <th>ALTERAR</th>
+        </tr>
+        <?php
+        foreach ($setores as $setor) {
+        ?>
+          <tr>
+            <td><?=$setor['nome'] ?></td>
+            <td><?=$setor['sigla'] ?></td>
+            <td>
+              <form action="deletar-setor.php" method="get">
+                <input type="hidden" name="id-deletar" value="<?=$setor["id"]?>" />
+                <button class="btn btn-danger">REMOVER</button>
+              </form>
+            </td>
+            <td>
+              <form action="alterar-setor.php" method="get">
+                <input type="hidden" name="id-alterar" value="<?=$setor["id"]?>"/>
+                <button class="btn btn-warning">ALTERAR</button>
+              </form>
+            </td>
+          </tr>
+        <?php } ?>
+      </table>
 
-<?php include("rodape.php"); ?>
+    </div>
+    <div class="row col-md-12">
+      <button class="btn btn-primary" onclick="Criar()">Criar Setor</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function Criar() {
+    location.href = "./registrar-setor.php";
+  }
+</script>
+
+<?php include("../rodape.php"); ?>
