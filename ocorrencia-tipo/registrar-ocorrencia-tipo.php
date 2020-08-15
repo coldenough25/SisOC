@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 <div class="container">
     <div class="row">
-        <div class="row col-md-12">
+        <div class="col-md-12">
             <div class="">
                 <h1>Registrar novo tipo de ocorrência</h1>
             </div>

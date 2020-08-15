@@ -22,12 +22,12 @@ include("banco-ocorrencia-tipo.php");
 
 
 <div class="row">
-    <div class="row col-md-12">
+    <div class="col-md-12">
         <h1>Lista de Tipos de Ocorrência</h1>
     </div>
 </div>
 <div class="row">
-  <div class="row col-md-12">
+  <div class="col-md-12">
       <button class="btn btn-primary" onclick="Criar()">Criar Tipo</button>
   </div>
 </div>

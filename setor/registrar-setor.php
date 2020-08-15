@@ -17,39 +17,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 <div class="container">
-    <div class="row col-md-12">
-        <div class="">
+    <div class="row">
+        <div class="col-md-12">
             <h1>Registrar novo setor</h1>
         </div>
     </div>
-
-    <div class="row col-md-12">
-        <div class="">
+    <div class="row">
+        <div class="col-md-12">
             <form action="" method="post">
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label for="nome">Nome</label>
-                        <input class="form-control" name="nome" id="nome"/>
+                        <input required class="form-control" name="nome" id="nome"/>
                     </div>
-
                     <div class="form-group col-md-6">
                         <label for="nome">Sigla</label>
-                        <input class="form-control" name="sigla" id="sigla"/>
+                        <input required class="form-control" name="sigla" id="sigla"/>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label for="nome">E-mail</label>
-                        <input class="form-control" name="email" id="email" type="email" />
+                        <input required class="form-control" name="email" id="email" type="email" />
                     </div>
                 </div>
-
                 <button type="submit" class="btn btn-primary">Criar</button>
             </form>
         </div>
     </div>
-
 </div>
 
 <?php include("../rodape.php"); ?>
