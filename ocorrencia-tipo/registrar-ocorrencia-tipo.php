@@ -3,7 +3,9 @@ include("../cabecalho.php");
 include("../menu2.php");
 include("../conecta.php");
 include("banco-ocorrencia-tipo.php");
+include ("../setor/banco-setor.php");
 
+$setores = listarSetor($conexao);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $nome = $_POST['nome'];
@@ -17,14 +19,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 <div class="container">
-    <div class="row col-md-12">
-        <div class="">
-            <h1>Registrar novo tipo de ocorrência</h1>
+    <div class="row">
+        <div class="row col-md-12">
+            <div class="">
+                <h1>Registrar novo tipo de ocorrência</h1>
+            </div>
         </div>
     </div>
-
-    <div class="row col-md-12">
-        <div class="">
+    <div class="row">
+        <div class="col-md-12">
             <form action="" method="post">
                 <div class="row">
                     <div class="form-group col-md-6">
@@ -34,7 +37,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     <div class="form-group col-md-6">
                         <label for="nome">Nome do setor</label>
-                        <input class="form-control" name="setor" id="setor" />
+                        <select name="setor" id="" class="form-control">
+                            <?php foreach ($setores as $setor):?>
+                                <option value="<?= $setor['id']?>"><?= $setor['nome']?></option>
+                            <?php endforeach;?>
+                        </select>
                     </div>
                 </div>
 

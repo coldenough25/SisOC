@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $resposta = adicionarSetor($conexao, $nome, $sigla, $email);
   if(isset($resposta)){
-    header("/setor/listar-setor.php");
+    header("Location: /setor/listar-setor.php");
   }
 }
 ?>

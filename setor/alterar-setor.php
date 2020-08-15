@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $resposta = alterarSetor($conexao, $nome, $sigla, $email, $id);
     if (isset($resposta) && $resposta != false) {
-        header("listar-setor.php");
+        header("Location: /setor/listar-setor.php");
     }
 }
 

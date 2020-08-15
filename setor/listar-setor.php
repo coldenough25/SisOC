@@ -21,12 +21,18 @@ include("banco-setor.php");
   ?>
 
 
-
-  <div class="row col-md-12">
-    <h1>Lista de Setores de Ocorrência</h1>
-  </div>
-
-  <div class="row">
+    <div class="row">
+        <div class="row col-md-12">
+            <h1>Lista de Setores de Ocorrência</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="row col-md-12">
+            <button class="btn btn-primary" onclick="Criar()">Criar Setor</button>
+        </div>
+    </div>
+    <br>
+    <div class="row">
     <div class="row col-md-12">
       <table class="table table-striped table-bordered">
         <tr>
@@ -63,9 +69,7 @@ include("banco-setor.php");
       </table>
 
     </div>
-    <div class="row col-md-12">
-      <button class="btn btn-primary" onclick="Criar()">Criar Setor</button>
-    </div>
+
   </div>
 </div>
 
