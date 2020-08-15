@@ -1,7 +1,7 @@
 <?php
-include("cabecalho.php");
-include("menu.php");
-include("conecta.php");
+include("../cabecalho.php");
+include("../menu2.php");
+include("../conecta.php");
 include("banco-ocorrencia.php");
 ?>
 

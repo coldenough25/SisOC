@@ -7,9 +7,9 @@
     $resultado = removerSetor($conexao, $id);
 
     if(isset($resultado) && $resultado != false){
-        header("Location:http://localhost/TCC/SisOC/setor/listar-setor.php?removido=true");
+        header("setor/listar-setor.php?removido=true");
     }else{
-        header("Location:http://localhost/TCC/SisOC/setor/listar-setor.php?removido=false");
+        header("setor/listar-setor.php?removido=false");
     }
     ?>
 

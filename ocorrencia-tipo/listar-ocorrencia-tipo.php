@@ -1,16 +1,12 @@
 <?php
 include("../cabecalho.php");
-//include("../menu.php");
+include("../menu2.php");
 include("../conecta.php");
 include("banco-ocorrencia-tipo.php");
 ?>
-
-<head>
-  <link rel="stylesheet" href="../css/global.css">
-</head>
 <div class="container">
 
-  <?php 
+  <?php
   if (isset($_GET["removido"]) && $_GET["removido"]) { ?>
     <p class="alert-success">Tipo deletado!!!</p>
   <?php } else if (isset($_GET["removido"]) && $_GET["removido"] == false){ ?>
@@ -18,13 +14,13 @@ include("banco-ocorrencia-tipo.php");
   <?php }
 
   $tipos = listarTipoOcorrencia($conexao);
-  
+
   if (isset($_GET["alterado"]) && $_GET["alterado"]) { ?>
     <p class="alert-success">Tipo alterado!!!</p>
   <?php }
   ?>
 
-  
+
 
   <div class="row col-md-12">
     <h1>Lista de Tipos de Ocorrência</h1>

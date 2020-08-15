@@ -1,12 +1,9 @@
 <?php
 include("../cabecalho.php");
 include("../conecta.php");
+include("../menu2.php");
 include("banco-setor.php");
 ?>
-
-<head>
-  <link rel="stylesheet" href="../css/global.css">
-</head>
 <div class="container">
 
   <?php
@@ -33,28 +30,33 @@ include("banco-setor.php");
     <div class="row col-md-12">
       <table class="table table-striped table-bordered">
         <tr>
-          <th>NOME</th>
-          <th>SIGLA</th>
-          <th>DELETAR</th>
-          <th>ALTERAR</th>
+          <th width="25%">NOME</th>
+          <th width="25%">SIGLA</th>
+          <th width="25%">EMAIL</th>
+          <th>OPÇÕES</th>
         </tr>
         <?php
         foreach ($setores as $setor) {
         ?>
           <tr>
-            <td><?=$setor['nome'] ?></td>
-            <td><?=$setor['sigla'] ?></td>
+            <td><?= $setor['nome'] ?></td>
+            <td><?= $setor['sigla'] ?></td>
+            <td><?= $setor['email'] ?></td>
             <td>
-              <form action="deletar-setor.php" method="get">
-                <input type="hidden" name="id-deletar" value="<?=$setor["id"]?>" />
-                <button class="btn btn-danger">REMOVER</button>
-              </form>
-            </td>
-            <td>
-              <form action="alterar-setor.php" method="get">
-                <input type="hidden" name="id-alterar" value="<?=$setor["id"]?>"/>
-                <button class="btn btn-warning">ALTERAR</button>
-              </form>
+                <div class="row">
+                    <div class="col-md-6">
+                        <form action="deletar-setor.php" method="get" class="form-inline ">
+                            <input type="hidden" name="id-deletar" value="<?= $setor["id"]?>" />
+                            <button class="btn btn-danger">REMOVER</button>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <form action="alterar-setor.php" method="get" class="form-inline ">
+                            <input type="hidden" name="id-alterar" value="<?= $setor["id"]?>"/>
+                            <button class="btn btn-warning">ALTERAR</button>
+                        </form>
+                    </div>
+                </div>
             </td>
           </tr>
         <?php } ?>
