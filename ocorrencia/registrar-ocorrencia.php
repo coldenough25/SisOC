@@ -3,19 +3,20 @@ include("../cabecalho.php");
 include("../menu2.php");
 include("banco-ocorrencia.php");
 
+
 $tipolista = listarTipos($conexao);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $parametros = [
         'alvo' => $_POST['alvo'],
-        'tipo' => $_POST['tipo'],
+        'tipo' => $_POST['tipoOcorrencia'],
         'date' => $_POST['date'],
         'horario' => $_POST['horario'],
         'descricao' => $_POST['descricao'],
         'dominio' => $_POST['dominio'],
         'ciador' => $_POST['ciador']
     ];
-  $resposta = adicionaOcorrencias($parametros);
+  $resposta = adicionaOcorrencias($conexao,$parametros);
 }
 ?>
 <div class="container">
@@ -31,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                       <input class="form-control" name="alvo" id="alvo" required>
                     </div>
                     <div class="form-group col-md-12">
-                        <label for="tipo">Tipo de alvo</label>
+                        <label for="tipoalvo">Tipo de alvo</label>
                         <select class="form-control" id="tipoalvo" name="tipoalvo" required>
                             <option value="A">ALUNO</option>
                             <option value="S">SERVIDOR</option>
@@ -39,23 +40,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <option value="O">OUTRO</option>
                         </select>
                     </div>
-                    <div id="alvoDiv"></div>
                 </div>
                 <div class="row">
                     <div class="form-group col-md-4">
-                        <label for="setor">Tipo da Ocorrência</label>
-                        <select required name="tipo" class="form-control" id="setor">
+                        <label for="tipoOcorrencia">Tipo da Ocorrência</label>
+                        <select required name="tipoOcorrencia" class="form-control" id="tipoOcorrencia">
                             <option value="">Selecione...</option>
-                            <option value="1">Infraestrutura</option>
-                            <option value="2">Desentendimento</option>
-                            <option value="3">Mau-uso do ambiente</option>
-                            <label for="tipo">Tipo</label>
-                            <select required name="tipo" class="form-control" id="tipo">
-                                <option value="">Selecione...</option>
-                                <?php foreach ($tipolista as $tipo) { ?>
-                                    <option value="<?= $tipo['id_ocorrencia_tipo'] ?>"><?= $tipo['descricao'] ?></option>
-                                <?php } ?>
-                            </select>
+                            <?php foreach ($tipolista as $tipo) { ?>
+                                <option value="<?= $tipo['id'] ?>"><?= $tipo['descricao'] ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="form-group col-md-4">

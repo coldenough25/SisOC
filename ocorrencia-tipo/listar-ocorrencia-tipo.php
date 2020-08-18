@@ -31,7 +31,7 @@ include("banco-ocorrencia-tipo.php");
       <button class="btn btn-primary" onclick="Criar()">Criar Tipo</button>
   </div>
 </div>
-    <br>
+<br>
 <div class="row">
     <div class="row col-md-12">
         <table class="table table-striped table-bordered">

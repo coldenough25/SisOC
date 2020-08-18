@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $resposta = alterarTipoOcorrencia($conexao, $nome, $setor, $descricao, $id);
   if (isset($resposta) && $resposta != false) {
-    header("/ocorrencia-tipo/listar-ocorrencia-tipo.php");
+    header("Location: /ocorrencia-tipo/listar-ocorrencia-tipo.php");
   }
 }
 ?>

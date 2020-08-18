@@ -35,6 +35,16 @@
                         SETOR
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="/usuario/listar-usuario.php" class="link">
+                        Usuario
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/usuario-tipo/listar-tipo-usuario.php" class="link">
+                        Usuario Tipo
+                    </a>
+                </li>
             </ul>
           </div>
         </nav>
