@@ -15,14 +15,12 @@
     while ($resultado = pg_fetch_assoc($id_setor)) {
       array_push($lista_id, $resultado);
     }
-    $resultado = pg_query_params($conexao, "INSERT INTO ocorrencia_tipo (nome, descricao, id_setor) VALUES ($1, $2, $3)", array($nome, $descricao, reset($lista_id[0])));
-    return $resultado;
+
+    return pg_query_params($conexao, "INSERT INTO ocorrencia_tipo (nome, descricao, id_setor) VALUES ($1, $2, $3)", array($nome, $descricao, reset($lista_id[0])));
   }
 
   function removerTipoOcorrencia($conexao, $id) {
-    $int_id = (int) $id;
-    $resultado = pg_query_params($conexao, "DELETE FROM ocorrencia_tipo WHERE id = $1;", array($int_id));
-    return $resultado;
+    return pg_query_params($conexao, "DELETE FROM ocorrencia_tipo WHERE id = $1;", array((int) $id));
   }
 
   function mostrarTipoOcorrencia($conexao, $id) {

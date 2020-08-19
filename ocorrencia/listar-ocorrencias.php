@@ -4,7 +4,7 @@ include("../menu2.php");
 include("../conecta.php");
 include("banco-ocorrencia.php");
 
-$ocorencias = listaOcorrenciasUsuarios($conexao);
+$ocorencias = listaOcorrencias($conexao);
 
 ?>
 
@@ -36,13 +36,21 @@ $ocorencias = listaOcorrenciasUsuarios($conexao);
         </thead>
         <tbody>
           <?php foreach ($ocorencias as $ocorencia): ?>
-        <tr>
-            <td><?= $ocorencia['id']?></td>
-            <td><?= $ocorencia['criador']?></td>
-            <td></td>
-            <td><?= $ocorencia['data_hora']->format('d/m/Y H:i:s')?></td>
-            <td><?= $ocorencia['ot_id']?></td>
-        </tr>
+            <tr>
+                <td><?= $ocorencia['id']?></td>
+                <td><?= $ocorencia['criador']?></td>
+                <td><?= $ocorencia['ra']?></td>
+                <td><?= $ocorencia['data'] ?></td>
+                <td><?= $ocorencia['alvo']?></td>
+                <td><?= $ocorencia['situacao']?></td>
+                <td><?= $ocorencia['setor']?></td>
+                <td>
+                    <form action="deletar-ocorrencia.php" method="get">
+                        <input type="hidden" name="id-deletar" value="<?=$ocorencia["id"]?>" />
+                        <button class="btn btn-danger">REMOVER</button>
+                    </form>
+                </td>
+            </tr>
         <?php endforeach; ?>
         </tbody>
         </table>

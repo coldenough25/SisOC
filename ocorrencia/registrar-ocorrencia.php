@@ -2,7 +2,7 @@
 include("../cabecalho.php");
 include("../menu2.php");
 include("banco-ocorrencia.php");
-
+include("../conecta.php");
 
 $tipolista = listarTipos($conexao);
 
@@ -16,7 +16,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'dominio' => $_POST['dominio'],
         'ciador' => $_POST['ciador']
     ];
-  $resposta = adicionaOcorrencias($conexao,$parametros);
+
+    $resposta = adicionaOcorrencias($conexao,$parametros);
+
+    if($resposta){
+        header("Location: /ocorrencia/listar-ocorrencias.php");
+    }
 }
 ?>
 <div class="container">

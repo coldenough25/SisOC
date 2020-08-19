@@ -33,7 +33,7 @@ include("banco-ocorrencia-tipo.php");
 </div>
 <br>
 <div class="row">
-    <div class="row col-md-12">
+    <div class="col-md-12">
         <table class="table table-striped table-bordered">
             <tr>
                 <th>NOME</th>
