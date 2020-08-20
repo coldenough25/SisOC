@@ -6,7 +6,7 @@ include("banco-setor.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $nome = $_POST["nome"];
-  $sigla = $_POST["sigla"];
+  $sigla = strtoupper($_POST["sigla"]);
   $email = $_POST["email"];
 
   $resposta = adicionarSetor($conexao, $nome, $sigla, $email);
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <div class="row">
         <div class="form-group col-md-12">
           <label for="nome">E-mail</label>
-          <input class="form-control" name="email" id="email" value="<?=$setor["email"]?>" />
+          <input class="form-control" name="email" id="email" />
         </div>
       </div>
 

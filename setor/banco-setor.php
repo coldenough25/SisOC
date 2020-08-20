@@ -21,7 +21,7 @@
 
   function mostrarSetor($conexao, $id) {
     $setores = array();
-    $resultado = pg_query_params($conexao, "SELECT id, nome, sigla, email FROM setor WHERE ot.id = $1", array($id));
+    $resultado = pg_query_params($conexao, "SELECT nome, sigla, email FROM setor WHERE id = $1", array($id));
     while ($setor = pg_fetch_assoc($resultado)) {
       array_push($setores, $setor);
     }

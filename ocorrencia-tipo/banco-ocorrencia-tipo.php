@@ -7,7 +7,6 @@
       array_push($tipo_ocorrencias, $ocorrencia);
     }
     return $tipo_ocorrencias;
-    //
   }
 
 

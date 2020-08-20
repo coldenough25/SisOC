@@ -4,7 +4,7 @@ include("banco-ocorrencia.php");
 include("../cabecalho.php");
 include("../menu.php");
 
-$tipolista = listarTipos($conexao);
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $alvo = $_POST['alvo'];
@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $hora = $_POST['horario'];
   $descricao = $_POST['descricao'];
 
-  $resposta = adicionaOcorrencia($conexao, $descricao);
+  $resposta = adicionarOcorrencia($conexao, $descricao);
 }
 ?>
 

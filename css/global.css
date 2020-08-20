@@ -34,6 +34,7 @@ input#check:checked~div.navbar.navbar-inverse.navbar-fixed-top {
 
 #icone {
 	top: 0%;
+	left: 0%;
 	cursor: pointer;
 	padding: 1.5rem;
 	position: absolute;
@@ -113,4 +114,8 @@ thead {
 
 .row {
 	margin-top: 16px;
+}
+
+.alert-success, .alert-danger{
+	text-align: center;
 }

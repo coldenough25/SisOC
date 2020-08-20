@@ -1,11 +1,7 @@
 <?php
-include("cabecalho.php");
-include("menu.php");
+require("cabecalho.php");
+require("menu.php");
 ?>
-
-<head>
-    <link rel="stylesheet" href="css/index.css">
-</head>
 
 <div id="welcome" class="col-md-12">
     <h1 class="head">Bem vindo ao SisOC!</h1>
