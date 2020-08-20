@@ -1,6 +1,6 @@
 <?php
   function listarSetor($conexao) {
-    $setores = array();
+    $setores = [];
     $resultado = pg_query($conexao, "SELECT id, nome, sigla, email FROM setor");
     while ($setor = pg_fetch_assoc($resultado)) {
       array_push($setores, $setor);
@@ -9,19 +9,16 @@
   }
 
   function adicionarSetor($conexao, $nome, $sigla, $email) {
-    $resultado = pg_query_params($conexao, "INSERT INTO setor (nome, sigla, email) VALUES ($1, $2, $3)", array($nome, $sigla, $email));
-    return $resultado;
+    return pg_query_params($conexao, "INSERT INTO setor (nome, sigla, email) VALUES ($1, $2, $3)", array($nome, $sigla, $email));
   }
 
   function removerSetor($conexao, $id) {
-    $int_id = (int) $id;
-    $resultado = pg_query_params($conexao, "DELETE FROM setor WHERE id = $1;", array($int_id));
-    return $resultado;
+    return pg_query_params($conexao, "DELETE FROM setor WHERE id = $1;", array((int)$id));
   }
 
   function mostrarSetor($conexao, $id) {
-    $setores = array();
-    $resultado = pg_query_params($conexao, "SELECT nome, sigla, email FROM setor WHERE id = $1", array($id));
+    $setores = [];
+    $resultado = pg_query_params($conexao, "SELECT id, nome, sigla, email FROM setor WHERE id = $1", array((int)$id));
     while ($setor = pg_fetch_assoc($resultado)) {
       array_push($setores, $setor);
     }

@@ -1,23 +1,30 @@
 <?php
-include("cabecalho.php");
-include("menu.php");
-include("conecta.php");
+include("../cabecalho.php");
+include("../menu2.php");
+include("../conecta.php");
 include("banco-ocorrencia.php");
+
+$ocorencias = listaOcorrencias($conexao);
+
 ?>
 
+
 <div class="container">
-    <div class="row" style="margin-top: 10px; text-align: center;">
-      <div class="col-md-12"><button class="btn btn-primary" onclick="Criar()">Criar Ocorrência</button></div>
-      <!-- <div class="col-md-3"><button class="btn btn-primary" onclick="Alterar()">Alterar Ocorrência</button></div>
-      <div class="col-md-3"><button class="btn btn-primary" onclick="Visualizar()">Visualizar Ocorrência</button></div>
-      <div class="col-md-3"><button class="btn btn-primary" onclick="Excluir()">Excluir Ocorrência</button></div> -->
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Lista de Ocorrência</h1>
+        </div>
     </div>
     <div class="row">
-      <!-- <?php var_dump(listaOcorrencias($conexao)); ?> -->
+      <div class="col-md-3"><button class="btn btn-primary" onclick="Criar()">Criar Ocorrência</button></div>
+    </div>
+    <br>
+    <div class="row">
       <div class="col-md-12">
         <table class="table table-bordered table-hover" id="itens">
         <thead>
           <tr>
+            <th>id</th>
             <th>Criador</th>
             <th>RA/Siape</th>
             <th>Data Registro</th>
@@ -28,19 +35,23 @@ include("banco-ocorrencia.php");
           </tr>
         </thead>
         <tbody>
-          <!-- <tr>
-            <td>Aluno 1</td>
-            <td>016989</td>
-            <td>19/02/2018 13:39</td>
-            <td>Infraestrutura</td>
-            <td>***</td>
-            <td>***</td>
-            <td>
-              <button type="button" class="limpo">
-                <span class="glyphicon glyphicon-download-alt"></span>
-              </button>
-            </td>
-          </tr> -->
+          <?php foreach ($ocorencias as $ocorencia): ?>
+            <tr>
+                <td><?= $ocorencia['id']?></td>
+                <td><?= $ocorencia['criador']?></td>
+                <td><?= $ocorencia['ra']?></td>
+                <td><?= $ocorencia['data'] ?></td>
+                <td><?= $ocorencia['alvo']?></td>
+                <td><?= $ocorencia['situacao']?></td>
+                <td><?= $ocorencia['setor']?></td>
+                <td>
+                    <form action="deletar-ocorrencia.php" method="get">
+                        <input type="hidden" name="id-deletar" value="<?=$ocorencia["id"]?>" />
+                        <button class="btn btn-danger">REMOVER</button>
+                    </form>
+                </td>
+            </tr>
+        <?php endforeach; ?>
         </tbody>
         </table>
       </div>
