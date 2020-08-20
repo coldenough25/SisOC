@@ -19,20 +19,20 @@ include("css/global.css");
 				<nav class="navigation-bar">
 					<ul>
                     <?php //if(!isset($_SESSION['logado'])) {?>
-                        <li><a href="http://localhost/TCC/SisOC/session/login.php">
+                        <li><a href="session/login.php">
 								<div class="link">EFETUAR LOGIN</div>
                             </a></li>
                     <?php //} else { ?>
-						<li><a href="http://localhost/TCC/SisOC/index.php">
+						<li><a href="index.php">
 								<div class="link">PÁGINA DE INÍCIO</div>
 							</a></li>
-						<li><a href="http://localhost/TCC/SisOC/ocorrencia/registrar-ocorrencia.php">
+						<li><a href="ocorrencia/registrar-ocorrencia.php">
 								<div class="link">REGISTRAR OCORRÊNCIA</div>
 							</a></li>
-						<li><a href="http://localhost/TCC/SisOC/ocorrencia/listar-ocorrencias.php">
+						<li><a href="ocorrencia/listar-ocorrencias.php">
 								<div class="link">LISTAR OCORRÊNCIAS</div>
                             </a></li>
-						<li><a href="http://localhost/TCC/SisOC/session/logout.php">
+						<li><a href="session/logout.php">
 								<div class="link">SAIR</div>
                             </a></li>
                     <?php// } ?>
