@@ -2,36 +2,37 @@
 include("../cabecalho.php");
 include("../conecta.php");
 include("banco-login.php");
+include("../usuario/banco-usuario.php");
+
 
 session_start();
 if (isset($_SESSION['logado'])) {
-    header('Location: index.php');
+    header('Location: http://localhost/TCC/SisOC/index.php');
     echo ($_SESSION['logado']);
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $count = 0;
-    $infos = array();
     if ($_POST["tipo"] == "A" || $_POST["tipo"] == "S") {
         $ra_siape = $_POST["raSiape"];
         $senha = $_POST["password"];
 
         $resultado = loginInstituicao($conexao, $ra_siape, $senha);
-        $count = pg_num_rows($resultado);
-        echo "$resultado";
     } else {
         $email = $_POST["email"];
         $senha = $_POST["password"];
 
         $resultado = loginTerceiros($conexao, $email, $senha);
-        $count = pg_num_rows($resultado);
-        echo "$resultado";
     }
 
-    if ($count != 1) {
-        header('Location: login.php?error=2');
-    } else {
+    if (isset($resultado) && $resultado != false) {
         $_SESSION['logado'] = true;
-        header('Location: index.php');
+        $_SESSION['id-usuario'] = $resultado;
+        $usuario = mostrarUsuario($conexao, $resultado['id']);
+        $_SESSION['nome-usuario'] = $resultado['nome'];
+        $_SESSION['tipo-usuario'] = $resultado['tipo'];
+        header('Location: http://localhost/TCC/SisOC/index.php');
+    } else {
+        header('Location: http://localhost/TCC/SisOC/session/login.php?error=2');
     }
 }
 ?>

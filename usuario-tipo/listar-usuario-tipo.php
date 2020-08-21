@@ -1,13 +1,9 @@
 <?php
-require("../conecta.php");
-require("../cabecalho.php");
-require("../menu.php");
-require("banco-usuario-tipo.php");
+include("../cabecalho.php");
+include("../menu2.php");
+include("../conecta.php");
+include("banco-usuario-tipo.php");
 ?>
-
-<head>
-  <link rel="stylesheet" href="../css/global.css">
-</head>
 
 <div class="container">
 

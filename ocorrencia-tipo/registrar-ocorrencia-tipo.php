@@ -3,7 +3,7 @@ include("../cabecalho.php");
 include("../menu2.php");
 include("../conecta.php");
 include("banco-ocorrencia-tipo.php");
-include ("../setor/banco-setor.php");
+include("../setor/banco-setor.php");
 
 $setores = listarSetor($conexao);
 

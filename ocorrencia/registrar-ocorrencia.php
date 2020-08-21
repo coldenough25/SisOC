@@ -1,89 +1,88 @@
 <?php
 include("../cabecalho.php");
-include("../menu2.php");
 include("banco-ocorrencia.php");
 include("../conecta.php");
+include("../ocorrencia-tipo/banco-ocorrencia-tipo.php");
+include("../usuario/banco-usuario.php");
+session_start();
 
-
+$tipolista = listarTipoOcorrencia($conexao);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $parametros = [
-        'alvo' => $_POST['alvo'],
-        'tipo' => $_POST['tipoOcorrencia'],
-        'date' => $_POST['date'],
-        'horario' => $_POST['horario'],
-        'descricao' => $_POST['descricao'],
-        'dominio' => $_POST['dominio'],
-        'ciador' => $_POST['ciador']
-    ];
+  $parametros = [
+    'alvo' => $_POST['alvo'],
+    'tipo' => $_POST['tipoOcorrencia'],
+    'date' => $_POST['date'],
+    'horario' => $_POST['horario'],
+    'descricao' => $_POST['descricao'],
+    'dominio' => 2,
+    'criador' => $_SESSION['id-usuario']
+  ];
 
-<<<<<<< HEAD
-  $resposta = adicionarOcorrencia($conexao, $descricao);
-=======
-    $resposta = adicionaOcorrencias($conexao,$parametros);
+  $resposta = adicionaOcorrencias($conexao, $parametros);
 
-    if($resposta){
-        header("Location: /ocorrencia/listar-ocorrencias.php");
-    }
->>>>>>> 36005498dc628262ffe7c1f9415fd56630c2645a
+  //if ($resposta) {
+  //  header("Location:/listar-ocorrencias.php");
+  //}
 }
+
+include("../menu2.php");
 ?>
 <div class="container">
-    <div class="row col-md-12">
-        <h1>Registrar nova ocorrência</h1>
-    </div>
-    <div class="row">
-        <div class=" col-md-12">
-            <form action="" method="post">
-                <div class="row">
-                    <div class="form-group col-md-12">
-                      <label for="alvo">Alvo</label>
-                      <input class="form-control" name="alvo" id="alvo" required>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label for="tipoalvo">Tipo de alvo</label>
-                        <select class="form-control" id="tipoalvo" name="tipoalvo" required>
-                            <option value="A">ALUNO</option>
-                            <option value="S">SERVIDOR</option>
-                            <option value="T">TERCEIRIZADO</option>
-                            <option value="O">OUTRO</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-md-4">
-                        <label for="tipoOcorrencia">Tipo da Ocorrência</label>
-                        <select required name="tipoOcorrencia" class="form-control" id="tipoOcorrencia">
-                            <option value="">Selecione...</option>
-                            <?php foreach ($tipolista as $tipo) { ?>
-                                <option value="<?= $tipo['id'] ?>"><?= $tipo['descricao'] ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="descricao">Data do acontecimento</label>
-                        <div class="input-group date">
-                            <input class="form-control" id="date" name="date" placeholder="DD/MM/YYY" type="date" required />
-                            <span class="input-group-addon">
+  <div class="row col-md-12">
+    <h1>Registrar nova ocorrência</h1>
+  </div>
+  <div class="row">
+    <div class=" col-md-12">
+      <form action="" method="post">
+
+        <div class="form-group col-md-12">
+          <label for="alvo">Alvo</label>
+          <input class="form-control" name="alvo" id="alvo" required>
+        </div>
+
+        <div class="form-group col-md-12">
+          <label for="tipoalvo">Tipo de alvo</label>
+          <select class="form-control" id="tipoalvo" name="tipoalvo" required>
+            <option value="A">ALUNO</option>
+            <option value="S">SERVIDOR</option>
+            <option value="T">TERCEIRIZADO</option>
+            <option value="O">OUTRO</option>
+          </select>
+        </div>
+
+        <div class="form-group col-md-12">
+          <label for="tipoOcorrencia">Tipo da Ocorrência</label>
+          <select required name="tipoOcorrencia" class="form-control" id="tipoOcorrencia">
+            <option value="">Selecione...</option>
+            <?php foreach ($tipolista as $tipo) { ?>
+              <option value="<?= $tipo['id'] ?>"><?= $tipo['nome'] ?></option>
+            <?php } ?>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="input#date">Data do evento</label>
+          <div class="input-group date">
+            <input class="form-control" id="date" name="date" placeholder="DD/MM/YYY" type="date" required />
+            <span class="input-group-addon">
               <span class="glyphicon glyphicon-calendar"></span>
             </span>
-                        </div>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="horario">Horário do acontecimento</label>
-                        <input class="form-control" type="time" id="horario" name="horario" required>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-md-12">
-                        <label for="descricao">Descrição</label>
-                        <textarea class="form-control" name="descricao" id="descricao"></textarea>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Criar</button>
-            </form>
+          </div>
         </div>
+        <div class="form-group col-md-6">
+          <label for="horario">Horário do acontecimento</label>
+          <input class="form-control" type="time" id="horario" name="horario" required>
+        </div>
+
+        <div class="form-group col-md-12">
+          <label for="descricao">Descrição</label>
+          <textarea class="form-control" name="descricao" id="descricao"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Criar</button>
+      </form>
     </div>
+  </div>
 </div>
 
 <script>

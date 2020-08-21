@@ -1,7 +1,8 @@
 <?php
-require("../cabecalho.php");
-require("../conecta.php");
-require("banco-usuario-tipo.php");
+include("../cabecalho.php");
+include("../menu2.php");
+include("../conecta.php");
+include("banco-usuario-tipo.php");
 
 $id = $_GET["id-alterar"];
 $tipos = mostrarTipoUsuario($conexao, $id);
@@ -17,34 +18,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<head>
-  <link rel="stylesheet" href="../css/global.css">
-</head>
-
 <?php foreach ($tipos as $tipo) { ?>
 
-  <div class="row col-md-12">
-    <div class="">
+  <div class="row col-sm-12">
       <h1>Alterar tipo de usuário</h1>
-    </div>
   </div>
-  <div class="row col-md-12">
-    <form action="" method="post">
-      <div class="row">
-        <div class="form-group col-md-6">
-          <label for="nome">Nome do tipo</label>
-          <input class="form-control" name="nome" id="nome" value="<?= $tipo["nome"] ?>" />
-        </div>
+  <div class="row col-sm-12">
+    <form action="" method="post" class="col-sm-12">
+      <div class="form-group col-sm-12">
+        <label for="nome">Nome do tipo</label>
+        <input class="form-control" name="nome" id="nome" value="<?= $tipo["nome"] ?>" />
       </div>
-      <div class="row">
-        <div class="form-group col-md-12">
-          <label for="descricao">Descrição</label>
-          <textarea class="form-control" name="descricao" id="descricao"><?= $tipo["descricao"] ?></textarea>
-        </div>
+      <div class="form-group col-sm-12">
+        <label for="descricao">Descrição</label>
+        <textarea class="form-control" name="descricao" id="descricao"><?= $tipo["descricao"] ?></textarea>
       </div>
-      <div class="row">
-        <button type="submit" name="alterar" class="btn btn-primary">Alterar</button>
-      </div>
+
+
+      <button type="submit" name="alterar" class="btn btn-primary">Alterar</button>
+
     </form>
   </div>
 <?php } ?>

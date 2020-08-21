@@ -1,7 +1,7 @@
 <?php
   function listarTipoUsuario($conexao) {
     
-    $tipo_usuarios = array();
+    $tipo_usuarios = [];
     $resultado = pg_query($conexao, "SELECT * FROM usuario_tipo");
     while ($usuario = pg_fetch_assoc($resultado)) {
       array_push($tipo_usuarios, $usuario);
@@ -22,7 +22,7 @@
   }
   
   function mostrarTipoUsuario($conexao, $id) {
-    $tipo_usuarios = array();
+    $tipo_usuarios = [];
     $resultado = pg_query_params($conexao, "SELECT * FROM usuario_tipo WHERE id = $1", array($id));
     while ($usuario = pg_fetch_assoc($resultado)) {
       array_push($tipo_usuarios, $usuario);

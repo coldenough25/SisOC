@@ -1,8 +1,10 @@
 
-<?php include("../cabecalho.php"); ?>
-<?php include("../conecta.php"); ?>
-<?php include("banco-usuario.php"); ?>
 <?php
+include("../cabecalho.php");
+include("../conecta.php");
+include("../menu2.php");
+include("banco-usuario.php");
+
 	$id = $_GET["id-deletar"];
     $resultado = removerUsuario($conexao, $id);
 
