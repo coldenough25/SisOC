@@ -4,7 +4,9 @@ include("../menu2.php");
 include("../conecta.php");
 include("banco-ocorrencia.php");
 
-$situacao = $_GET['situacao'];
+if(isset($_GET["situacao"])){
+  $situacao = $_GET['situacao'];
+}
 $ocorencias = listaOcorrencias($conexao, $situacao);
 
 ?>
