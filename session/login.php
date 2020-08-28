@@ -7,11 +7,11 @@ include("../usuario/banco-usuario.php");
 
 session_start();
 if (isset($_SESSION['logado'])) {
-    header('Location: http://localhost/TCC/SisOC/index.php');
-    echo ($_SESSION['logado']);
+    //header('Location: http://localhost/TCC/SisOC/index.php');
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $count = 0;
+    $resultado;
     if ($_POST["tipo"] == "A" || $_POST["tipo"] == "S") {
         $ra_siape = $_POST["raSiape"];
         $senha = $_POST["password"];
@@ -26,13 +26,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (isset($resultado) && $resultado != false) {
         $_SESSION['logado'] = true;
-        $_SESSION['id-usuario'] = $resultado;
+        $_SESSION['id-usuario'] = $resultado['id'];
         $usuario = mostrarUsuario($conexao, $resultado['id']);
         $_SESSION['nome-usuario'] = $resultado['nome'];
         $_SESSION['tipo-usuario'] = $resultado['tipo'];
-        header('Location: http://localhost/TCC/SisOC/index.php');
+        //header('Location: http://localhost/TCC/SisOC/index.php');
     } else {
-        header('Location: http://localhost/TCC/SisOC/session/login.php?error=2');
+        //header('Location: http://localhost/TCC/SisOC/session/login.php?error=2');
     }
 }
 ?>

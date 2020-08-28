@@ -3,7 +3,7 @@
 function listaOcorrencias($conexao, $situacao)
 {
   $ocorrencias = [];
-  if (isset($situacao) && $situacao != false) {
+  if (isset($situacao) && $situacao != "") {
     $resultado = pg_query($conexao, "SELECT oc.id, oc.descricao, oc.alvo ,oc.data_hora AS data, oc.situacao AS situacao,
                 us.nome AS criador, us.ra_siape AS ra,
                 st.nome AS setor
@@ -11,7 +11,7 @@ function listaOcorrencias($conexao, $situacao)
                     JOIN usuario us ON oc.criador = us.id
                     JOIN ocorrencia_tipo oct ON oc.ot_id = oct.id
                     JOIN setor st ON oct.id_setor = st.id
-                    WHERE situacao = '{$situacao}'
+                    WHERE situacao = ANY('{{$situacao}}')
                 ");
   } else {
     $resultado = pg_query($conexao, "SELECT oc.id, oc.descricao, oc.alvo ,oc.data_hora AS data, oc.situacao AS situacao,
@@ -71,16 +71,12 @@ function adicionaOcorrencias($conexao, $parametro)
   }
 }
 
-function alterarOcorrencia($conexao, $nome, $descricao, $id, $nome_tipo_ocorrencia)
-{
-}
-
 function removerOcorrencia($conexao, $id)
 {
   return pg_query_params($conexao, "DELETE FROM ocorrencia WHERE id = $1;", array((int) $id));
 }
 
-function alteraOcorrencia($conexao, $parametro)
+function alterarOcorrencia($conexao, $parametro)
 {
 
   $data = new DateTime();

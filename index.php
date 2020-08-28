@@ -4,9 +4,9 @@ include("menu2.php");
 include("conecta.php");
 include("ocorrencia/banco-ocorrencia.php");
 
-$enviadas = count(organizaOcorrencias($conexao, "RECEBIDAS"));
+$enviadas = count(organizaOcorrencias($conexao, "ENVIADA"));
 $visualizadas = count(organizaOcorrencias($conexao, "EM ANÁLISE, VISUALIZADAS, VISUALIZADA, EM TRÂMITE, EM TRAMITE, EM ANALISE"));
-$finalizadas = count(organizaOcorrencias($conexao, "FINALIZADAS"));
+$finalizadas = count(organizaOcorrencias($conexao, "FINALIZADA"));
 
 ?>
 
@@ -15,7 +15,7 @@ $finalizadas = count(organizaOcorrencias($conexao, "FINALIZADAS"));
     <div class="row mt-5">
         <div class="col-sm-4">
             <form action="ocorrencia/listar-ocorrencias.php" method="get">
-                <input type="hidden" name="situacao" value="enviadas" />
+                <input type="hidden" name="q" value="ENVIADA" />
                 <button class="btn btn-outline-success">
                     <div class="card-body text-center">
                         <h5 class="card-title">Enviadas</h5>
@@ -28,8 +28,7 @@ $finalizadas = count(organizaOcorrencias($conexao, "FINALIZADAS"));
         </div>
         <div class="col-sm-4">
             <form action="ocorrencia/listar-ocorrencias.php" method="get">
-                <input type="hidden" name="situacao" value="finalizadas" />
-                <button class="btn btn-outline-success">
+                <input type="hidden" name="q" id="q" value="EM ANÁLISE, VISUALIZADAS, VISUALIZADA, EM TRÂMITE, EM TRAMITE, EM ANALISE"> <button class="btn btn-outline-success">
                     <div class="card-body text-center">
                         <h5 class="card-title">Visualizadas</h5>
                     </div>
@@ -42,7 +41,7 @@ $finalizadas = count(organizaOcorrencias($conexao, "FINALIZADAS"));
 
         <div class="col-sm-4">
             <form action="ocorrencia/listar-ocorrencias.php" method="get">
-                <input type="hidden" name="situacao" value="finalizadas" />
+                <input type="hidden" name="q" id="q" value="FINALIZADA">
                 <button class="btn btn-outline-success">
                     <div class="card-body text-center">
                         <h5 class="card-title">Finalizadas</h5>

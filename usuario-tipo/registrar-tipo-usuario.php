@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST['nome'];
     $descricao = $_POST['descricao'];
 
-    $resposta = incluirTipoUsuario($conexao, $nome, $descricao);
+    $resposta = adicionarTipoUsuario($conexao, $nome, $descricao);
 
     if(isset($resposta)){
         header("Location: /usuario-tipo/listar-tipo-usuario.php");

@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'id-alterar' => $id
     ];
 
-    $resposta = alteraOcorrencia($conexao, $parametros);
+    $resposta = alterarOcorrencia($conexao, $parametros);
 
     //if ($resposta) {
     //  header("Location:/listar-ocorrencias.php");
@@ -42,6 +42,7 @@ include("../menu2.php");
     <div class="row col-md-12">
         <h1>Alterar ocorrência</h1>
     </div>
+    <input type="hidden" name="testandojs" id="testandojs" value="<?=$_SESSION['tipo-usuario']?>">
     <div class="row">
         <div class=" col-md-12">
             <form action="" method="post">
