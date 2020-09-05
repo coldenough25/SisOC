@@ -41,7 +41,7 @@ class OcorrenciasTiposTable extends Table
         parent::initialize($config);
 
         $this->setTable('ocorrencias_tipos');
-        $this->setDisplayField('id');
+        $this->setDisplayField('nome');
         $this->setPrimaryKey('id');
 
         $this->belongsTo('Setors', [

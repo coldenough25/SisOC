@@ -15,7 +15,6 @@
                     <th><?= $this->Paginator->sort('nome') ?></th>
                     <th><?= $this->Paginator->sort('ra_siape') ?></th>
                     <th><?= $this->Paginator->sort('email') ?></th>
-                    <th><?= $this->Paginator->sort('senha') ?></th>
                     <th><?= $this->Paginator->sort('usuarios_tipo_id') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
@@ -27,8 +26,7 @@
                     <td><?= h($usuario->nome) ?></td>
                     <td><?= h($usuario->ra_siape) ?></td>
                     <td><?= h($usuario->email) ?></td>
-                    <td><?= h($usuario->senha) ?></td>
-                    <td><?= $usuario->has('usuarios_tipo') ? $this->Html->link($usuario->usuarios_tipo->id, ['controller' => 'UsuariosTipos', 'action' => 'view', $usuario->usuarios_tipo->id]) : '' ?></td>
+                    <td><?= $usuario->has('usuarios_tipo') ? $this->Html->link($usuario->usuarios_tipo->nome, ['controller' => 'UsuariosTipos', 'action' => 'view', $usuario->usuarios_tipo->id]) : '' ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $usuario->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $usuario->id]) ?>

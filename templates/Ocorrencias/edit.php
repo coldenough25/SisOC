@@ -23,7 +23,6 @@
                 <legend><?= __('Edit Ocorrencia') ?></legend>
                 <?php
                     echo $this->Form->control('descricao');
-                    echo $this->Form->control('dominio');
                     echo $this->Form->control('criador');
                     echo $this->Form->control('alvo');
                     echo $this->Form->control('data_hora');
@@ -31,7 +30,7 @@
                     echo $this->Form->control('ocorrencias_tipo_id', ['options' => $ocorrenciasTipos]);
                 ?>
             </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->button(__('Enviar')) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>

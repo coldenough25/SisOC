@@ -32,7 +32,6 @@ class Ocorrencia extends Entity
      */
     protected $_accessible = [
         'descricao' => true,
-        'dominio' => true,
         'criador' => true,
         'alvo' => true,
         'data_hora' => true,

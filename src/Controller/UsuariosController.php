@@ -107,4 +107,36 @@ class UsuariosController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function beforeFilter(\Cake\Event\EventInterface $event) {
+        parent::beforeFilter($event);
+        $this->Authentication->addUnauthenticatedActions(['login']);
+    }
+
+    public function login() {
+        $this->Authorization->skipAuthorization();
+
+        $this->request->allowMethod(['get', 'post']);
+        $result = $this->Authentication->getResult();
+        if ($result->isValid()) {
+            $redirect = $this->request->getQuery('redirect', [
+                'controller' => 'Ocorrencias',
+                'action' => 'index',
+            ]);
+
+            return $this->redirect($redirect);
+        }
+        if ($this->request->is('post') && !$result->isValid()) {
+            $this->Flash->error(__('Falha no login. Verifique suas credenciais.'));
+        }
+    }
+
+    public function logout() {
+        $this->Authorization->skipAuthorization();
+        $result = $this->Authentication->getResult();
+        if ($result->isValid()) {
+            $this->Authentication->logout();
+            return $this->redirect(['controller' => 'Usuarios', 'action' => 'login']);
+        }
+    }
 }

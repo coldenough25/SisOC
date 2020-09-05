@@ -67,10 +67,6 @@ class OcorrenciasTable extends Table
             ->notEmptyString('descricao');
 
         $validator
-            ->integer('dominio')
-            ->allowEmptyString('dominio');
-
-        $validator
             ->integer('criador')
             ->requirePresence('criador', 'create')
             ->notEmptyString('criador');
