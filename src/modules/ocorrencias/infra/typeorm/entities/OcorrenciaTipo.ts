@@ -24,5 +24,5 @@ export default class OcorrenciaTipo {
   setor: Setor;
 
   @Column()
-  setor_id: string;
+  setor_id: number;
 }
