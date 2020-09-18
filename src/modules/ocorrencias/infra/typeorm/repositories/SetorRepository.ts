@@ -23,4 +23,8 @@ export default class SetorRepository implements ISetorRepository {
 
     return ocorrencia;
   }
+
+  public async save(setor: Setor): Promise<Setor> {
+    return this.ormRepository.save(setor);
+  }
 }

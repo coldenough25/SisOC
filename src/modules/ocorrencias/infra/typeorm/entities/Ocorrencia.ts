@@ -29,7 +29,7 @@ export default class Ocorrencia {
   ocorrencia_tipo: OcorrenciaTipo;
 
   @Column()
-  ocorrencia_tipo_id: string;
+  ocorrencia_tipo_id: number;
 
   @CreateDateColumn()
   created_at: Date;
