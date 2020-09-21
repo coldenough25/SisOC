@@ -5,4 +5,6 @@ export default interface IUsuarioTipoRepository {
   findById(id: number): Promise<UsuarioTipo | undefined>;
   create(data: ICriarUsuarioTipoDTO): Promise<UsuarioTipo>;
   save(user: ICriarUsuarioTipoDTO): Promise<UsuarioTipo>;
+  list(): Promise<UsuarioTipo[]>;
+  delete(id: number): Promise<void>;
 }
