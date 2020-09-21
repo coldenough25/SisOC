@@ -3,7 +3,8 @@ import { injectable, inject } from 'tsyringe';
 
 import AppError from '@shared/errors/AppError';
 import authConfig from '@config/auth';
-import User from '../infra/typeorm/entities/User';
+
+import Usuario from '../infra/typeorm/entities/Usuario';
 import IUserRepository from '../repositories/IUserRepository';
 import IHashProvider from '../providers/HashProvider/models/IHashProvider';
 
@@ -13,7 +14,7 @@ interface IRequest {
 }
 
 interface IResponse {
-  user: User;
+  user: Usuario;
   token: string;
 }
 
@@ -41,8 +42,7 @@ export default class AuthenticateUserService {
 
     const { secret, expiresIn } = authConfig.jwt;
 
-    const token = sign({}, secret, {
-      subject: user.id,
+    const token = sign({ subject: user.id }, secret, {
       expiresIn,
     });
 

@@ -5,7 +5,7 @@ import ICriarOcorrenciaDTO from '@modules/ocorrencias/dtos/ICriarOcorrenciaDTO';
 
 import Ocorrencia from '../entities/Ocorrencia';
 
-class OcorrenciaRepository implements IOcorrenciaRepository {
+export default class OcorrenciaRepository implements IOcorrenciaRepository {
   private ormRepository: Repository<Ocorrencia>;
 
   constructor() {
@@ -17,8 +17,8 @@ class OcorrenciaRepository implements IOcorrenciaRepository {
     return foundOcorrencia;
   }
 
-  public async create(data: ICriarOcorrenciaDTO): Promise<Ocorrencia> {
-    const ocorrencia = this.ormRepository.create(data);
+  public async create(dados: ICriarOcorrenciaDTO): Promise<Ocorrencia> {
+    const ocorrencia = this.ormRepository.create(dados);
     await this.ormRepository.save(ocorrencia);
 
     return ocorrencia;
@@ -28,5 +28,3 @@ class OcorrenciaRepository implements IOcorrenciaRepository {
     return this.ormRepository.save(ocorrencia);
   }
 }
-
-export default OcorrenciaRepository;

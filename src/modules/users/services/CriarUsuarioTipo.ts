@@ -6,7 +6,7 @@ import ICriarUsuarioTipoDTO from '../dtos/ICriarUsuarioTipoDTO';
 import UsuarioTipo from '../infra/typeorm/entities/UsuarioTipo';
 
 @injectable()
-export default class CreateUserService {
+export default class CriarUsuarioTipo {
   constructor(
     @inject('UsuarioTipoRepository')
     private repository: IUsuarioTipoRepository,

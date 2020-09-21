@@ -24,7 +24,16 @@ export default class UsuarioTipoRepository implements IUsuarioTipoRepository {
     return tipo;
   }
 
+  public async list(): Promise<UsuarioTipo[]> {
+    const tipos = await this.ormRepository.find();
+    return tipos;
+  }
+
   public async save(tipo: UsuarioTipo): Promise<UsuarioTipo> {
     return this.ormRepository.save(tipo);
+  }
+
+  public async delete(id: number): Promise<void> {
+    await this.ormRepository.delete(id);
   }
 }
