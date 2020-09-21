@@ -10,6 +10,7 @@ export default class ProfileController {
     const user = await showProfile.execute({
       user_id: Number(request.user.id),
     });
+
     delete user?.senha;
 
     return response.json(user);
