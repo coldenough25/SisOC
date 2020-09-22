@@ -1,9 +1,8 @@
 import { injectable, inject } from 'tsyringe';
 
 import IOcorrenciaRepository from '../repositories/IOcorrenciaRepository';
-
-import Ocorrencia from '../infra/typeorm/entities/Ocorrencia';
 import ICriarOcorrenciaDTO from '../dtos/ICriarOcorrenciaDTO';
+import Ocorrencia from '../infra/typeorm/entities/Ocorrencia';
 
 @injectable()
 export default class CriarOcorrencia {

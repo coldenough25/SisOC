@@ -8,6 +8,8 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
+import { Exclude } from 'class-transformer';
+
 import UsuarioTipo from './UsuarioTipo';
 
 @Entity('usuario')
@@ -25,6 +27,7 @@ class Usuario {
   email: string;
 
   @Column()
+  @Exclude()
   senha: string;
 
   @ManyToOne(() => UsuarioTipo, { eager: true })
@@ -32,7 +35,7 @@ class Usuario {
   usuario_tipo: UsuarioTipo;
 
   @Column()
-  usuario_tipo_id: string;
+  usuario_tipo_id: number;
 
   @CreateDateColumn()
   created_at: Date;

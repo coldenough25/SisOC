@@ -12,19 +12,28 @@ export default class SetorRepository implements ISetorRepository {
     this.ormRepository = getRepository(Setor);
   }
 
-  public async findById(id: string): Promise<Setor | undefined> {
-    const foundSetor = await this.ormRepository.findOne(id);
-    return foundSetor;
+  public async findById(id: number): Promise<Setor | undefined> {
+    const setor = await this.ormRepository.findOne(id);
+    return setor;
+  }
+
+  public async list(): Promise<Setor[]> {
+    const setores = await this.ormRepository.find();
+    return setores;
   }
 
   public async create(data: ICriarSetorDTO): Promise<Setor> {
-    const ocorrencia = this.ormRepository.create(data);
-    await this.ormRepository.save(ocorrencia);
+    const setor = this.ormRepository.create(data);
+    await this.ormRepository.save(setor);
 
-    return ocorrencia;
+    return setor;
   }
 
   public async save(setor: Setor): Promise<Setor> {
     return this.ormRepository.save(setor);
+  }
+
+  public async delete(id: number): Promise<void> {
+    await this.ormRepository.delete(id);
   }
 }

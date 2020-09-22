@@ -5,22 +5,18 @@ import AppError from '@shared/errors/AppError';
 import IUserRepository from '../repositories/IUserRepository';
 import Usuario from '../infra/typeorm/entities/Usuario';
 
-interface IRequest {
-  user_id: number;
-}
-
 @injectable()
-export default class ShowProfileService {
+export default class MostrarUsuario {
   constructor(
     @inject('UserRepository')
     private repository: IUserRepository,
   ) {}
 
-  public async execute({ user_id }: IRequest): Promise<Usuario> {
-    const user = await this.repository.findById(user_id);
+  public async execute(id: number): Promise<Usuario> {
+    const user = await this.repository.findById(id);
 
     if (!user) {
-      throw new AppError('You are not authenticated', 401);
+      throw new AppError('Este usuário não existe', 400);
     }
     return user;
   }

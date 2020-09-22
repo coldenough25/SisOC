@@ -1,6 +1,6 @@
 import AppError from '@shared/errors/AppError';
 import FakeUserRepository from '../repositories/fakes/FakeUserRepository';
-import ShowProfileService from './ShowProfileService';
+import ShowProfileService from './MostrarUsuario';
 
 let fakeRepository: FakeUserRepository;
 let showProfile: ShowProfileService;
@@ -19,18 +19,12 @@ describe('ShowProfile', () => {
       ra_siape: '123456',
     });
 
-    const toShowUser = await showProfile.execute({
-      user_id: user.id,
-    });
+    const toShowUser = await showProfile.execute(user.id);
 
     expect(toShowUser).toHaveProperty('id');
   });
 
   it('should not be able to show a non-existing user profile', async () => {
-    await expect(
-      showProfile.execute({
-        user_id: 999,
-      }),
-    ).rejects.toBeInstanceOf(AppError);
+    await expect(showProfile.execute(999)).rejects.toBeInstanceOf(AppError);
   });
 });

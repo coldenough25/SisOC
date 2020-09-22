@@ -1,5 +1,6 @@
 import { injectable, inject } from 'tsyringe';
 
+import AppError from '@shared/errors/AppError';
 import UsuarioTipo from '../infra/typeorm/entities/UsuarioTipo';
 import IUsuarioTipoRepository from '../repositories/IUsuarioTipoRepository';
 
@@ -10,8 +11,9 @@ export default class MostrarUsuarioTipo {
     private repository: IUsuarioTipoRepository,
   ) {}
 
-  public async execute(id: number): Promise<UsuarioTipo | undefined> {
+  public async execute(id: number): Promise<UsuarioTipo> {
     const tipo = await this.repository.findById(id);
+    if (!tipo) throw new AppError('Este tipo não existe');
 
     return tipo;
   }

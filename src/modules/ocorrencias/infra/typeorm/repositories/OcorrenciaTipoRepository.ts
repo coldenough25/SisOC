@@ -13,9 +13,14 @@ export default class OcorrenciaTipoRepository
     this.ormRepository = getRepository(OcorrenciaTipo);
   }
 
-  public async findById(id: string): Promise<OcorrenciaTipo | undefined> {
-    const foundOcorrenciaTipo = await this.ormRepository.findOne(id);
-    return foundOcorrenciaTipo;
+  public async findById(id: number): Promise<OcorrenciaTipo | undefined> {
+    const tipo = await this.ormRepository.findOne(id);
+    return tipo;
+  }
+
+  public async list(): Promise<OcorrenciaTipo[]> {
+    const tipos = await this.ormRepository.find();
+    return tipos;
   }
 
   public async create(data: ICriarOcorrenciaTipoDTO): Promise<OcorrenciaTipo> {
@@ -27,5 +32,9 @@ export default class OcorrenciaTipoRepository
 
   public async save(tipo: OcorrenciaTipo): Promise<OcorrenciaTipo> {
     return this.ormRepository.save(tipo);
+  }
+
+  public async delete(id: number): Promise<void> {
+    await this.ormRepository.delete(id);
   }
 }

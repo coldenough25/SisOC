@@ -12,9 +12,14 @@ export default class OcorrenciaRepository implements IOcorrenciaRepository {
     this.ormRepository = getRepository(Ocorrencia);
   }
 
-  public async findById(id: string): Promise<Ocorrencia | undefined> {
-    const foundOcorrencia = await this.ormRepository.findOne(id);
-    return foundOcorrencia;
+  public async findById(id: number): Promise<Ocorrencia | undefined> {
+    const ocorrencia = await this.ormRepository.findOne(id);
+    return ocorrencia;
+  }
+
+  public async list(): Promise<Ocorrencia[]> {
+    const ocorrencia = await this.ormRepository.find();
+    return ocorrencia;
   }
 
   public async create(dados: ICriarOcorrenciaDTO): Promise<Ocorrencia> {
@@ -26,5 +31,9 @@ export default class OcorrenciaRepository implements IOcorrenciaRepository {
 
   public async save(ocorrencia: Ocorrencia): Promise<Ocorrencia> {
     return this.ormRepository.save(ocorrencia);
+  }
+
+  public async delete(id: number): Promise<void> {
+    await this.ormRepository.delete(id);
   }
 }

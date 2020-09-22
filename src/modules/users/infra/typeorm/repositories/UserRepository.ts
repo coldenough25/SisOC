@@ -32,6 +32,15 @@ class UserRepository implements IUserRepository {
   public async save(user: Usuario): Promise<Usuario> {
     return this.ormRepository.save(user);
   }
+
+  public async delete(id: number): Promise<void> {
+    await this.ormRepository.delete(id);
+  }
+
+  public async list(): Promise<Usuario[]> {
+    const usuarios = await this.ormRepository.find();
+    return usuarios;
+  }
 }
 
 export default UserRepository;

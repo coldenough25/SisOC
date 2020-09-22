@@ -11,8 +11,6 @@ export default class SessionController {
 
     const { user, token } = await authenticateUser.execute({ email, senha });
 
-    delete user?.senha;
-
     return response.json({ user, token });
   }
 }

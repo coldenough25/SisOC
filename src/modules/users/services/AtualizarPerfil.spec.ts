@@ -1,6 +1,6 @@
 import AppError from '@shared/errors/AppError';
 import FakeUserRepository from '../repositories/fakes/FakeUserRepository';
-import UpdateUserService from './UpdateUserService';
+import UpdateUserService from './AtualizarPerfil';
 import FakeHashProvider from '../providers/HashProvider/fakes/FakeHashProvider';
 
 let fakeHashProvider: FakeHashProvider;

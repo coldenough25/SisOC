@@ -8,6 +8,10 @@ const ocorrenciaController = new OcorrenciaController();
 
 router.use(verifyAuthenticaction);
 
+router.get('/', ocorrenciaController.index);
 router.post('/', ocorrenciaController.create);
+router.get('/:id', ocorrenciaController.show);
+router.put('/:id', ocorrenciaController.update);
+router.patch('/:id', ocorrenciaController.delete);
 
 export default router;

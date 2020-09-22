@@ -25,7 +25,7 @@ export default class CreateUserService {
     const userExists = await this.repository.findByEmail(email);
 
     if (userExists) {
-      throw new AppError('E-mail is in use');
+      throw new AppError('E-mail em uso');
     }
 
     const password_hash = await this.hashProvider.generate(senha);
