@@ -7,7 +7,7 @@ import IUsuarioRepository from '../repositories/IUserRepository';
 @injectable()
 export default class DeletarUsuario {
   constructor(
-    @inject('UsuarioRepository')
+    @inject('UserRepository')
     private repository: IUsuarioRepository,
   ) {}
 

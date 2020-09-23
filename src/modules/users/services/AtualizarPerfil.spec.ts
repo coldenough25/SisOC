@@ -20,6 +20,7 @@ describe('UpdateUser', () => {
       email: 'email@test.com',
       senha: '123456',
       ra_siape: '123456',
+      usuario_tipo_id: 1,
     });
 
     const updatedUser = await updateUser.execute({
@@ -38,6 +39,7 @@ describe('UpdateUser', () => {
       email: 'email@test.com',
       senha: '123456',
       ra_siape: '123456',
+      usuario_tipo_id: 1,
     });
 
     const user = await fakeRepository.create({
@@ -45,6 +47,7 @@ describe('UpdateUser', () => {
       email: 'carlos@jonathan.com',
       senha: '123456',
       ra_siape: '123456',
+      usuario_tipo_id: 1,
     });
 
     await expect(
@@ -62,6 +65,7 @@ describe('UpdateUser', () => {
       email: 'email@test.com',
       senha: '123123',
       ra_siape: '123456',
+      usuario_tipo_id: 1,
     });
 
     const updatedUser = await updateUser.execute({
@@ -81,6 +85,7 @@ describe('UpdateUser', () => {
       email: 'email@test.com',
       senha: '123123',
       ra_siape: '123456',
+      usuario_tipo_id: 1,
     });
 
     await expect(
@@ -99,6 +104,7 @@ describe('UpdateUser', () => {
       email: 'email@test.com',
       senha: '123123',
       ra_siape: '123456',
+      usuario_tipo_id: 1,
     });
 
     await expect(

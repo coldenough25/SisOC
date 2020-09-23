@@ -51,6 +51,10 @@ class UserRepository implements IUserRepository {
   public async delete(id: number): Promise<void> {
     this.users = this.users.filter(item => item.id !== id);
   }
+
+  public async list(): Promise<Usuario[]> {
+    return this.users;
+  }
 }
 
 export default UserRepository;

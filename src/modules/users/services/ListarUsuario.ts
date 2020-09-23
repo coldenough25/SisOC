@@ -6,7 +6,7 @@ import IUsuarioRepository from '../repositories/IUserRepository';
 @injectable()
 export default class ListarUsuario {
   constructor(
-    @inject('UsuarioRepository')
+    @inject('UserRepository')
     private repository: IUsuarioRepository,
   ) {}
 
