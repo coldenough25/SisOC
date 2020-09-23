@@ -17,7 +17,7 @@ export default class UserController {
   }
 
   public async create(request: Request, response: Response): Promise<Response> {
-    const { nome, email, senha, ra_siape } = request.body;
+    const { nome, email, senha, ra_siape, usuario_tipo_id } = request.body;
 
     const createUser = container.resolve(CreateUserService);
 
@@ -26,6 +26,7 @@ export default class UserController {
       email,
       senha,
       ra_siape,
+      usuario_tipo_id,
     });
 
     return response.json(classToClass(newUser));
