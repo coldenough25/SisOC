@@ -21,6 +21,7 @@ export default class CreateUserService {
     ra_siape,
     email,
     senha,
+    usuario_tipo_id,
   }: ICreateUserDTO): Promise<Usuario> {
     const userExists = await this.repository.findByEmail(email);
 
@@ -35,6 +36,7 @@ export default class CreateUserService {
       ra_siape,
       email,
       senha: password_hash,
+      usuario_tipo_id,
     });
 
     return newUser;

@@ -3,4 +3,5 @@ export default interface ICreateUserDTO {
   ra_siape: string;
   email: string;
   senha: string;
+  usuario_tipo_id: number;
 }
