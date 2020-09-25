@@ -13,14 +13,14 @@ import setorRouter from '@modules/ocorrencias/infra/http/routes/setor.routes';
 
 const routes = Router();
 
-routes.use('/usuarios', userRouter);
 routes.use('/usuarios/tipo', usuarioTipoRouter);
+routes.use('/usuarios', userRouter);
 
 routes.use('/perfil', profileRouter);
 routes.use('/sessao', sessionRouter);
 
-routes.use('/ocorrencias', ocorrenciaRouter);
 routes.use('/ocorrencias/tipo', ocorrenciaTipoRouter);
+routes.use('/ocorrencias', ocorrenciaRouter);
 
 routes.use('/setores', setorRouter);
 
