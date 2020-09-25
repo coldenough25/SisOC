@@ -23,5 +23,8 @@ routes.use('/ocorrencias/tipo', ocorrenciaTipoRouter);
 routes.use('/ocorrencias', ocorrenciaRouter);
 
 routes.use('/setores', setorRouter);
+routes.get('/versao', (request, response) => {
+  return response.json({ versao: '1.1' });
+});
 
 export default routes;
