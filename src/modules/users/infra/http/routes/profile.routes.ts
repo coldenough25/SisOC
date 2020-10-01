@@ -10,6 +10,6 @@ const profileController = new ProfileController();
 
 router.use(verifyAuthentication);
 router.get('/', profileController.show);
-router.put('/', profileController.update);
+// router.put('/', profileController.update);
 
 export default router;
