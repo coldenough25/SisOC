@@ -22,7 +22,9 @@ app.use(routes);
 
 app.use((ex: Error, request: Request, response: Response, _: NextFunction) => {
   if (ex instanceof AppError) {
-    response.status(ex.statusCode).json({ status: 'error', error: ex.message });
+    return response
+      .status(ex.statusCode)
+      .json({ status: 'error', error: ex.message });
   }
 
   console.log(ex);

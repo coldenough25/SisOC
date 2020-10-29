@@ -21,6 +21,8 @@ export default class CriarOcorrencia {
   ) {}
 
   public async execute({
+    criador,
+    alvo,
     datahora,
     descricao,
     situacao,
@@ -34,6 +36,8 @@ export default class CriarOcorrencia {
     );
 
     const ocorrencia = await this.repository.create({
+      criador,
+      alvo,
       datahora,
       descricao,
       situacao,

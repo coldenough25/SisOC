@@ -19,6 +19,8 @@ export default class AtualizarOcorrencia {
 
   public async execute({
     id,
+    criador,
+    alvo,
     descricao,
     datahora,
     ocorrencia_tipo_id,
@@ -28,6 +30,8 @@ export default class AtualizarOcorrencia {
     if (!ocorrencia) throw new AppError('Esta ocorrencia não existe');
 
     Object.assign(ocorrencia, {
+      criador,
+      alvo,
       descricao,
       datahora,
       ocorrencia_tipo_id,

@@ -1,3 +1,4 @@
+import Usuario from '@modules/users/infra/typeorm/entities/Usuario';
 import {
   Column,
   CreateDateColumn,
@@ -15,6 +16,16 @@ export default class Ocorrencia {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column('integer')
+  criador: number;
+
+  @ManyToOne(() => Usuario, { eager: true })
+  @JoinColumn({ name: 'criador' })
+  usuario_criador: Usuario;
+
+  @Column()
+  alvo: string;
+
   @Column()
   descricao: string;
 
@@ -28,7 +39,7 @@ export default class Ocorrencia {
   @JoinColumn({ name: 'ocorrencia_tipo_id' })
   ocorrencia_tipo: OcorrenciaTipo;
 
-  @Column()
+  @Column('integer')
   ocorrencia_tipo_id: number;
 
   @CreateDateColumn()

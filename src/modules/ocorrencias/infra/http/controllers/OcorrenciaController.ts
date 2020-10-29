@@ -11,7 +11,9 @@ import DeletarOcorrencia from '@modules/ocorrencias/services/DeletarOcorrencia';
 export default class OcorrenciaController {
   public async index(request: Request, response: Response): Promise<Response> {
     const listarOcorrencias = container.resolve(ListarOcorrencia);
-    const ocorrencias = await listarOcorrencias.execute();
+    const ocorrencias = await listarOcorrencias.execute({
+      usuario_id: request.user.id,
+    });
 
     return response.json(ocorrencias);
   }
@@ -19,18 +21,29 @@ export default class OcorrenciaController {
   public async show(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
     const mostrarOcorrencia = container.resolve(MostrarOcorrencia);
-    const ocorrencia = await mostrarOcorrencia.execute(Number(id));
+    const ocorrencia = await mostrarOcorrencia.execute({
+      ocorrencia_id: Number(id),
+      usuario: request.user,
+    });
 
     return response.json(ocorrencia);
   }
 
   public async create(request: Request, response: Response): Promise<Response> {
-    const { descricao, situacao, datahora, ocorrencia_tipo_id } = request.body;
+    const {
+      alvo,
+      descricao,
+      situacao,
+      datahora,
+      ocorrencia_tipo_id,
+    } = request.body;
 
     const parsedDate = parseISO(datahora);
 
     const criarOcorrencia = container.resolve(CriarOcorrencia);
     const ocorrencia = await criarOcorrencia.execute({
+      criador: request.user.id,
+      alvo,
       descricao,
       situacao,
       datahora: parsedDate,
@@ -42,12 +55,20 @@ export default class OcorrenciaController {
 
   public async update(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
-    const { datahora, descricao, ocorrencia_tipo_id, situacao } = request.body;
+    const {
+      alvo,
+      datahora,
+      descricao,
+      ocorrencia_tipo_id,
+      situacao,
+    } = request.body;
     const parsedDate = parseISO(datahora);
 
     const atualizarOcorrencia = container.resolve(AtualizarOcorrencia);
     const ocorrencia = await atualizarOcorrencia.execute({
       id: Number(id),
+      criador: request.user.id,
+      alvo,
       datahora: parsedDate,
       descricao,
       ocorrencia_tipo_id,

@@ -1,20 +1,20 @@
 import { injectable, inject } from 'tsyringe';
 
+import AppError from '@shared/errors/AppError';
 import IOcorrenciaRepository from '../repositories/IOcorrenciaRepository';
 import Ocorrencia from '../infra/typeorm/entities/Ocorrencia';
-import IListarOcorrenciaDTO from '../dtos/IListarOcorrenciaDTO';
 
 @injectable()
-export default class ListarOcorrencia {
+export default class ListarTodasOcorrencias {
   constructor(
     @inject('OcorrenciaRepository')
     private repository: IOcorrenciaRepository,
   ) {}
 
-  public async execute({
-    usuario_id,
-  }: IListarOcorrenciaDTO): Promise<Ocorrencia[]> {
-    const ocorrencias = await this.repository.userOwner({ usuario_id });
+  public async execute(tipo: string): Promise<Ocorrencia[]> {
+    if (tipo !== 'admin') throw new AppError('Você não tem permissão', 401);
+
+    const ocorrencias = await this.repository.list();
 
     return ocorrencias;
   }

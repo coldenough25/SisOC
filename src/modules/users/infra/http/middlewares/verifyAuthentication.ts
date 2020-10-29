@@ -7,7 +7,10 @@ import authConfig from '@config/auth';
 interface ITokenPayload {
   iat: number;
   exp: number;
-  sub: string;
+  subject: {
+    id: number;
+    tipo: string;
+  };
 }
 
 export default function verifyAuthentication(
@@ -26,10 +29,11 @@ export default function verifyAuthentication(
   try {
     const decoded = verify(token, authConfig.jwt.secret);
 
-    const { sub } = decoded as ITokenPayload;
+    const { subject } = decoded as ITokenPayload;
 
     request.user = {
-      id: sub,
+      id: subject.id,
+      tipo: subject.tipo,
     };
 
     return next();

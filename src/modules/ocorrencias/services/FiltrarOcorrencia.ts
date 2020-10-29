@@ -2,10 +2,10 @@ import { injectable, inject } from 'tsyringe';
 
 import IOcorrenciaRepository from '../repositories/IOcorrenciaRepository';
 import Ocorrencia from '../infra/typeorm/entities/Ocorrencia';
-import IListarOcorrenciaDTO from '../dtos/IListarOcorrenciaDTO';
+import IFiltrarOcorrenciaDTO from '../dtos/IFiltarOcorrenciaDTO';
 
 @injectable()
-export default class ListarOcorrencia {
+export default class FiltrarOcorrencia {
   constructor(
     @inject('OcorrenciaRepository')
     private repository: IOcorrenciaRepository,
@@ -13,8 +13,12 @@ export default class ListarOcorrencia {
 
   public async execute({
     usuario_id,
-  }: IListarOcorrenciaDTO): Promise<Ocorrencia[]> {
-    const ocorrencias = await this.repository.userOwner({ usuario_id });
+    situacao,
+  }: IFiltrarOcorrenciaDTO): Promise<Ocorrencia[]> {
+    const ocorrencias = await this.repository.listaFiltrada({
+      usuario_id,
+      situacao,
+    });
 
     return ocorrencias;
   }
